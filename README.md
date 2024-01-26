@@ -1,1 +1,1 @@
-NN model made to recognize hand written letters from the MNIST data set. The images are 28x28pixels and contain a number writtern by hand with white on black background, each pixel has a value between 0 and 255 (0 -> black and 255 -> white.
+NN model made to recognize hand written letters from the MNIST data set. The images are 28x28pixels and contain a number writtern by hand with white on black background, each pixel has a value between 0 and 255 (0 -> black and 255 -> white).
