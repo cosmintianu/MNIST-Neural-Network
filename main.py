@@ -104,3 +104,48 @@ def gradient_descent(X, Y, alpha, iterations):
     return W1, b1, W2, b2
 
 W1, b1, W2, b2 = gradient_descent(X_train, Y_train, 0.15, 200)
+
+
+def make_predictions(X, W1, b1, W2, b2):
+    _, _, _, A2 = forward_prop(W1, b1, W2, b2, X)
+    predictions = get_predictions(A2)
+    return predictions
+
+
+def test_prediction(index, W1, b1, W2, b2):
+    current_image = X_train[:, index, None]
+    prediction = make_predictions(X_train[:, index, None], W1, b1, W2, b2)
+    label = Y_train[index]
+    print("Prediction: ", prediction)
+    print("Label: ", label)
+
+    current_image = current_image.reshape((28, 28)) * 255
+    plt.gray()
+    plt.imshow(current_image, interpolation='nearest')
+    plt.show()
+
+#test_prediction(9, W1, b1 ,W2 ,b2)
+#test_prediction(3, W1, b1, W2, b2)
+
+dev_predictions = make_predictions(X_dev, W1, b1, W2, b2)
+print('The average accuaracy for the dev set is : ',f'{get_accuracy(dev_predictions, Y_dev):.3%}')
+#get_accuracy(dev_predictions, Y_dev)
+#print(f'{get_accuracy(dev_predictions, Y_dev):.3%}')
+
+while True:
+    user_input = input("Enter a number between 0 and 41999 (or 'x' to exit): ")
+
+    if user_input.lower() == 'x':
+        print("Exiting the program.")
+        break  # Exit the loop if the user enters 'x'
+
+    try:
+        number = int(user_input)
+        if 0 <= number <= 41999:
+            # Valid number, perform test_prediction
+            result = test_prediction(number, W1, b1, W2, b2)
+            #print(f"Result of test_prediction for {number}: {result}")
+        else:
+            print("Invalid number. Please enter a number between 0 and 41999.")
+    except ValueError:
+        print("Invalid input. Please enter a valid number or 'x' to exit.")
