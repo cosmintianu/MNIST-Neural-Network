@@ -22,13 +22,13 @@ Y_train = data_train[0]
 X_train = data_train[1:n]
 X_train = X_train / 255.
 
-#print(X_train[:,0].shape) #print nr of imputs
+#print(X_train[:,0].shape) #print nr of inputs
 
 def init_params(size):
-    W1 = np.random.rand(10, size) - 0.5
-    b1 = np.random.rand(10, 1) - 0.5
-    W2 = np.random.rand(10, 10) - 0.5
-    b2 = np.random.rand(10, 1) - 0.5
+    W1 = np.random.rand(10, size) * 0.05 #- 0.5
+    b1 = np.random.rand(10, 1) * 0.05 #- 0.5
+    W2 = np.random.rand(10, 10) * 0.05 #- 0.5
+    b2 = np.random.rand(10, 1) * 0.05 #- 0.5
 
     return W1, b1, W2, b2
 
@@ -103,7 +103,7 @@ def gradient_descent(X, Y, alpha, iterations):
             print(f'{get_accuracy(prediction, Y):.3%}')
     return W1, b1, W2, b2
 
-W1, b1, W2, b2 = gradient_descent(X_train, Y_train, 0.15, 200)
+W1, b1, W2, b2 = gradient_descent(X_train, Y_train, 0.15, 500)
 
 
 def make_predictions(X, W1, b1, W2, b2):
@@ -128,7 +128,7 @@ def test_prediction(index, W1, b1, W2, b2):
 #test_prediction(3, W1, b1, W2, b2)
 
 dev_predictions = make_predictions(X_dev, W1, b1, W2, b2)
-print('The average accuaracy for the dev set is : ',f'{get_accuracy(dev_predictions, Y_dev):.3%}')
+print('The average accuracy for the dev set is : ',f'{get_accuracy(dev_predictions, Y_dev):.3%}')
 #get_accuracy(dev_predictions, Y_dev)
 #print(f'{get_accuracy(dev_predictions, Y_dev):.3%}')
 
