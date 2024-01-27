@@ -107,7 +107,7 @@ def gradient_descent(X, Y, alpha, iterations):
     return W1, b1, W2, b2
 
 
-W1, b1, W2, b2 = gradient_descent(X_train, Y_train, 0.15, 500)
+W1, b1, W2, b2 = gradient_descent(X_train, Y_train, 0.3, 500)
 
 
 def make_predictions(X, W1, b1, W2, b2):
