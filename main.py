@@ -81,11 +81,14 @@ def update_params(W1, b1, W2, b2, dW1, db1, dW2, db2, alpha):
     b2 = b2 - alpha * db2
     return W1, b1, W2, b2
 
+
 def get_predictions(A2):
     return np.argmax(A2, 0)
 
+
 def get_accuracy(predictions, Y):
     return np.sum(predictions == Y)/Y.size
+
 
 def gradient_descent(X, Y, alpha, iterations):
     size , m = X.shape
@@ -102,6 +105,7 @@ def gradient_descent(X, Y, alpha, iterations):
             prediction = get_predictions(A2)
             print(f'{get_accuracy(prediction, Y):.3%}')
     return W1, b1, W2, b2
+
 
 W1, b1, W2, b2 = gradient_descent(X_train, Y_train, 0.15, 500)
 
@@ -127,8 +131,9 @@ def test_prediction(index, W1, b1, W2, b2):
 #test_prediction(9, W1, b1 ,W2 ,b2)
 #test_prediction(3, W1, b1, W2, b2)
 
+
 dev_predictions = make_predictions(X_dev, W1, b1, W2, b2)
-print('The average accuracy for the dev set is : ',f'{get_accuracy(dev_predictions, Y_dev):.3%}')
+print('The average accuracy for the dev set is : ', f'{get_accuracy(dev_predictions, Y_dev):.3%}')
 #get_accuracy(dev_predictions, Y_dev)
 #print(f'{get_accuracy(dev_predictions, Y_dev):.3%}')
 
